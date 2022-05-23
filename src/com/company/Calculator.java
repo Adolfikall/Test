@@ -50,11 +50,15 @@ public class Calculator {
         }
     }
 
-    private void calculateRim(int num1, int num2, char operation) {
+    private void calculateRim(int num1, int num2, char operation) throws Exception {
         String rim = "";
         if (operation == '+') {
             rim = numeration.getRomanNum(plus(num1, num2));
         } else if (operation == '-') {
+            int num = minus(num1, num2);
+            if (num < 0) {
+                throw new Exception("отрицательный римский результат");
+            }
             rim = numeration.getRomanNum(minus(num1, num2));
         } else if (operation == '*') {
             rim = numeration.getRomanNum(multi(num1, num2));
